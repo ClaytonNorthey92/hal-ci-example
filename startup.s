@@ -3,6 +3,7 @@
 
 .global ResetHandler
 ResetHandler:
-	LDR SP, =stack_top
+	LDR SP, =0x20001000
+	NOP
 	BL main
 	B .

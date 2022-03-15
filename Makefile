@@ -4,10 +4,12 @@ compile-host:
 run-host: compile-host
 	./a.out
 
-compile-arm :
+assemble-arm:
 	arm-none-eabi-as -mcpu=cortex-m3 startup.s -g -o  startup.o
+
+
+compile-arm : assemble-arm
 	arm-none-eabi-gcc \
-		-g \
 		-Tcortex-m3-tests.ld \
 		-mcpu=cortex-m3 \
 		-mthumb \
@@ -15,8 +17,9 @@ compile-arm :
 		-I . \
 		startup.o \
 		Unity/src/*.c cortex-m3/*.c *.c \
-		-o led_test.elf
-	arm-none-eabi-objcopy led_test.elf led_test.bin
+		-g -o led_test.elf
 
 run-arm: compile-arm
-	qemu-system-arm -S -s -machine netduino2 -cpu cortex-m3 -nographic -kernel led_test.bin
+	qemu-system-arm \
+	-device loader,addr=0x08000001,cpu-num=0 \
+	-machine stm32vldiscovery -cpu cortex-m3 -nographic -kernel led_test.elf
