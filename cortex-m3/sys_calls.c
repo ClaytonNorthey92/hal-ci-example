@@ -29,3 +29,11 @@ void _fstat_r(void) {
 void _isatty_r(void) {
 	return;
 }
+
+void _kill(void) {
+	return;
+}
+
+int _getpid(void) {
+	return 0;
+}
