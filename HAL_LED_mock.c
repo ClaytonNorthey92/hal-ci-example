@@ -6,13 +6,11 @@ static int calls [MAX_CALLS_EXPECTED] = {0};
 static int call = 0;
 
 void mock_turn_led_off(void) {
-	printf("turn_led_off called\n");
 	calls[call] = CALL_ID_mock_turn_led_off;
 	call++;
 }
 
 void mock_turn_led_on(void) {
-	printf("turn_led_on called\n");
 	calls[call] = CALL_ID_mock_turn_led_on;
 	call++;
 }

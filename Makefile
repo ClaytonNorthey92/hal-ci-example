@@ -13,6 +13,7 @@ compile-arm : assemble-arm
 		-Tcortex-m3-tests.ld \
 		-mcpu=cortex-m3 \
 		-mthumb \
+		-include output.h \
 		-I Unity \
 		-I . \
 		startup.o \
