@@ -29,4 +29,5 @@ docker-build:
 	docker build -t hal_ci_example .
 
 docker-test:
-	docker run hal_ci_example:latest make run-arm
+	docker run hal_ci_example:latest $(timeout 5 make run-arm > test_log.txt)
+	cat test_log.txt

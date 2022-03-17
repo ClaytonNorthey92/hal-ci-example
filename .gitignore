@@ -2,3 +2,4 @@
 *.out
 *.elf
 *.bin
+*log.txt
