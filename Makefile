@@ -24,3 +24,9 @@ run-arm: compile-arm
 	qemu-system-arm \
 	-device loader,addr=0x08000001,cpu-num=0 \
 	-machine stm32vldiscovery -cpu cortex-m3 -nographic -kernel led_test.elf
+
+docker-build:
+	docker build -t hal_ci_example .
+
+docker-test:
+	docker run hal_ci_example:latest make run-arm
