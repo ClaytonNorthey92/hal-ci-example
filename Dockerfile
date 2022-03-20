@@ -10,9 +10,8 @@ RUN apt-get install -y git
 RUN git clone --depth 1 --recurse-submodules --branch v6.2.0 https://github.com/qemu/qemu.git
 WORKDIR /tmp/qemu/build
 RUN ../configure
-RUN make
+RUN make qemu-system-arm
 
 WORKDIR /app
-COPY . /app
 
 ENV PATH=$PATH:/tmp/qemu/build

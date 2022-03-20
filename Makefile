@@ -23,11 +23,10 @@ compile-arm : assemble-arm
 run-arm: compile-arm
 	qemu-system-arm \
 	-device loader,addr=0x08000001,cpu-num=0 \
-	-machine stm32vldiscovery -cpu cortex-m3 -nographic -kernel led_test.elf
+	-machine stm32vldiscovery -cpu cortex-m3 -nographic -kernel led_test.elf > test_log.txt
 
 docker-build:
 	docker build -t hal_ci_example .
 
 docker-test:
-	docker run hal_ci_example:latest $(timeout 5 make run-arm > test_log.txt)
-	cat test_log.txt
+	docker run -it -v $(shell pwd):/app hal_ci_example:latest python3 evaluate_tests.py
