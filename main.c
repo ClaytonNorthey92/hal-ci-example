@@ -10,8 +10,10 @@ int main() {
 	return UnityEnd();
 }
 
+// in order to print to stdout, qemu forwards the first serial port to stdout, so we
+// need to send data to that port's data register
 void print_something(char s) {
-volatile unsigned int * const UART0DR = (unsigned int *)0x40013804;
- *UART0DR = (unsigned int)(s); /* Transmit char */
+	unsigned int * first_serial = (unsigned int *)0x40013804;
+ 	*first_serial = (unsigned int)(s); /* Transmit char */
 }
 
