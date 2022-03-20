@@ -29,4 +29,4 @@ docker-build:
 	docker build -t hal_ci_example .
 
 docker-test:
-	docker run -it -v $(shell pwd):/app hal_ci_example:latest python3 evaluate_tests.py
+	docker run -v $(shell pwd):/app hal_ci_example:latest python3 evaluate_tests.py
