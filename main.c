@@ -14,6 +14,6 @@ int main() {
 // need to send data to that port's data register
 void print_something(char s) {
 	unsigned int * first_serial = (unsigned int *)0x40013804;
- 	*first_serial = (unsigned int)(s); /* Transmit char */
+ 	*first_serial = (unsigned int)(s);
 }
 
