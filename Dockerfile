@@ -1,10 +1,10 @@
 # Dockerfile
 
-FROM debian:stable
+FROM debian:11.8
 
 # install dependencies
 RUN apt-get update
-RUN apt-get install -y make wget qemu gcc-arm-none-eabi python3 ninja-build gcc build-essential zlib1g-dev pkg-config libglib2.0-dev binutils-dev libboost-all-dev autoconf libtool libssl-dev libpixman-1-dev virtualenv
+RUN apt-get install -y make wget gcc-arm-none-eabi python3 ninja-build gcc build-essential zlib1g-dev pkg-config libglib2.0-dev binutils-dev libboost-all-dev autoconf libtool libssl-dev libpixman-1-dev virtualenv
 
 # install exact version of qemu (this takes a long time)
 # as of writing this, v6.2.0 is not available in apt-get, so I want to clone and build
